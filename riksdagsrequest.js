@@ -11,12 +11,17 @@ module.exports = {
             };
             const xmlOptions = {ignoreComment: true, alwaysChildren: false};
             const req = https.request(options, res => {
-                res.on('data', function (data) {
+                let body = "";
+                res.on('data', (chunk) => {
                     //convert the result to a JSON object
-                    let result = data
-                    resolve(result);
+                    body += chunk;
                 });
-                res.on('end', function () {
+                res.on('end', () => {
+                    try {
+                        resolve(JSON.parse(body));
+                    } catch (error) {
+                        reject(error);
+                    };
 
                 });
                 res.on('error', function(error) {
