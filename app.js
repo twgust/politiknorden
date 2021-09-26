@@ -14,4 +14,6 @@ server.listen(port, hostname, () => {
 });
 
 const riksDagRequest =  require('./riksdagsrequest.js');
-console.log(riksDagRequest.getRiksdagsledamot())
+riksDagRequest.getRiksdagsledamot().then(json => {
+  console.log(json);
+});
