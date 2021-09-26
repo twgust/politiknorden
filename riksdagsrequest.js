@@ -2,7 +2,7 @@ const https = require('http');
 //const convert = require('xml-js');
 
 module.exports = {
-    getCurrentSong: function(channelID) {
+    getRiksdagsledamot: function(channelID) {
         //return a Promise object
         return new Promise(function (resolve, reject) {
             const options = {
