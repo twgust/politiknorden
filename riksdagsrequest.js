@@ -6,7 +6,7 @@ module.exports = {
         //return a Promise object
         return new Promise(function (resolve, reject) {
             const options = {
-                host: 'data.riksdagen.se,',
+                host: 'data.riksdagen.se',
                 path: '/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista='
             };
             const xmlOptions = {ignoreComment: true, alwaysChildren: false};

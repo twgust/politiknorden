@@ -14,4 +14,4 @@ server.listen(port, hostname, () => {
 });
 
 const riksDagRequest =  require('./riksdagsrequest.js');
-
+console.log(riksDagRequest.getCurrentSong())
