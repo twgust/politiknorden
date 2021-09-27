@@ -18,5 +18,13 @@ server.listen(port, hostname, () => {
 
 const riksDagRequest =  require('./riksdagsrequest.js');
 riksDagRequest.getRiksdagsledamot().then(json => {
-  console.log(json);
+  const arr = Object.keys(json).map((key) => [key, json[key]]);
+  console.log(arr);
+
+  Object.keys(json).forEach(function(key) {
+    var value = json[key];
+    console.log(value);
+    // ...
+});
+  //console.log(json);
 });
