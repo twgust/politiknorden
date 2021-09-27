@@ -25,6 +25,6 @@ riksDagRequest.getRiksdagsledamot().then(json => {
     var value = json[key];
     console.log(value);
     // ...
-});
+}); 
   //console.log(json);
 });
