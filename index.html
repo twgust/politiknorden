@@ -1,18 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#memberInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#memberTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 	<link href="./resources/css/index.css" type="text/css" rel="stylesheet">
 	<meta charset="utf-8">
 	<title>Politik-Nörden</title>
 </head>
+
 <body>
 
-<h1>
-	Header
-</h1>
+<h2>
+	PolitikNörden
+</h2>
 
 <p>
-	paragraph
+	Search for members of swedish parliament using the text input field below
 </p>
+<input id="memberInput" type="text" placeholder="Search...">
+<br><br>
+
+<table>
+	<thread>
+		<tr>
+		<th>First name</th>
+		<th>Family name</th>
+		<th>Political party</th>
+		</tr>
+	</thread>
+	<tbody id = "memberTable">
+
+	// populate with members of parliament from JSON
+	<tr>
+		<td>sample</td>
+		<td>sample1</td>
+		<td>sample2</td>
+	</tr>
+	<tr>
+		<td>example</td>
+		<td>example1</td>
+		<td>example2</td>
+	</tr>
+
+
+	</tbody>
+</table>
 </body>
 </html>
