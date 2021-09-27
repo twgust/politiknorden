@@ -1,12 +1,15 @@
 const http = require('http');
+const fs = require('fs');
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
 const server = http.createServer((req, res) => {
+  const htmlFile = 'index.html';
   res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
+  res.setHeader('Content-Type', 'text/html');
+  fs.createReadStream(htmlFile).pipe(res);
+  //res.end('Hello World');
 });
 
 server.listen(port, hostname, () => {
