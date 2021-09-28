@@ -18,13 +18,11 @@ server.listen(port, hostname, () => {
 
 const riksDagRequest =  require('./riksdagsrequest.js');
 riksDagRequest.getRiksdagsledamot().then(json => {
-  const arr = Object.keys(json).map((key) => [key, json[key]]);
-  console.log(arr);
-
-  Object.keys(json).forEach(function(key) {
-    var value = json[key];
-    console.log(value);
-    // ...
-}); 
-  //console.log(json);
+  for (var i = 0; i < 349; i++) {
+    console.log(json['personlista']['person'][i]
+    ['tilltalsnamn'] + ' ' 
+      +  json['personlista']['person'][i]['efternamn'] +' ' 
+      + json['personlista']['person'][i]['parti']
+      + ' :' + i);
+  }
 });
