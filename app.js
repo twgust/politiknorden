@@ -19,10 +19,8 @@ server.listen(port, hostname, () => {
 const riksDagRequest =  require('./riksdagsrequest.js');
 riksDagRequest.getRiksdagsledamot().then(json => {
   for (var i = 0; i < 349; i++) {
-    console.log(json['personlista']['person'][i]
-    ['tilltalsnamn'] + ' ' 
-      +  json['personlista']['person'][i]['efternamn'] +' ' 
-      + json['personlista']['person'][i]['parti']
-      + ' :' + i);
+    console.log(json['personlista']['person'][i]['tilltalsnamn'] + ' ' +  
+      json['personlista']['person'][i]['efternamn'] +' ' + 
+      json['personlista']['person'][i]['parti'] + ' :' + i);
   }
 });

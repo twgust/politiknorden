@@ -23,20 +23,25 @@ $(document).ready(function(){
 	PolitikNörden
 </h2>
 
-<p>
+<p id="test">
 	Search for members of swedish parliament using the text input field below
 </p>
 <input id="memberInput" type="text" placeholder="Search...">
 <br><br><br>
 
-<table>
+
+
+<div style="height:100px;overflow:auto;">
+
+
+<table id='myTable' bgcolor="#A9A9A9">
 	<thread>
 		<tr>
-		<th>First name</th>
-		<th>Family name</th>
-		<th>Political party</th>
+		<th id=firstName>First name</th>
+		<th id=lastName>Family name</th>
+		<th id=politicalParty>Political party</th>
 		</tr>
-	</thread>
+	</thread>	
 	<tbody id = "memberTable">
 	<tr>
 		<td>sample</td>
@@ -52,8 +57,9 @@ $(document).ready(function(){
 	</tr>
 	</tbody>
 </table>
-
+</div>
 <a href="https://github.com/twgust/politiknorden" style=" position: absolute; bottom: 0; left: 0; width: 100%; text-align: center;"> collaboration between Alexandra Koch and Gustav Florén - Github </a>
+
 </body>
 </center>
 </html>
