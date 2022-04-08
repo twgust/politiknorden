@@ -23,10 +23,14 @@ riksDagRequest.getRiksdagsledamot().then(json => {
   for (var i = 0; i < mpCount; i++) {
     console.log(json['personlista']['person'][i]['tilltalsnamn'] + ' ' +  
       json['personlista']['person'][i]['efternamn'] +' ' + 
-      json['personlista']['person'][i]['parti'] + ' :' + i);
+      json['personlista']['person'][i]['parti'] + ':' + (i + 1));
   }
 });
 
+//returns information relating to the MP
+function String getLedamot(nameOfMP){
+  return 'sample'
+}
 
 
 function setInputQuery(inputName){
