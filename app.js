@@ -4,6 +4,7 @@ const url = require('url')
 
 const hostname = '127.0.0.1';
 const port = 3000;
+var jsonObject = "";
 
 const server = http.createServer((req, res) => {
   const reqUrl = url.parse(req.url,true);
@@ -34,11 +35,7 @@ const server = http.createServer((req, res) => {
   else if (reqUrl.pathname === "/api/getpolitician"){
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
-    
-    const getPoliticians = require('./riksdagsrequest.js');
-    getPoliticians.getRiksdagsledamot().then(responseBody => {
-      res.end(JSON.stringify(responseBody));
-    });
+    res.end(JSON.stringify(jsonObject));
   }
 
   else {
@@ -46,14 +43,20 @@ const server = http.createServer((req, res) => {
       res.write("404 Not Found");
       res.end();
   };
-  
   //res.end('Hello World');
 });
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
+  onStart();
 });
 
+function onStart(){
+  const getPoliticians = require('./riksdagsrequest.js');
+  getPoliticians.getRiksdagsledamot().then(responseBody => {
+      jsonObject = responseBody;
+    });
+}
 
 function fileStreamPromise(path) {
   return new Promise((resolve, reject) => {
