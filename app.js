@@ -11,29 +11,44 @@ const server = http.createServer((req, res) => {
     res.write(await fileStreamPromise(path))
     res.end();
   }
+
   if (reqUrl.pathname === "/") {
     const htmlFile = 'index.html';
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
     writeResponseFromFile(htmlFile);
+  } 
+
+  else if (reqUrl.pathname === "/api/gettweets") {
+    const urlParams = reqUrl.query;
+    const searchTerm = urlParams['politiker'.toString()];
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+
+    const searchtweet = require('./searchtweet.js');
+    searchtweet.twitterSearchQuery(searchTerm).then(responseBody=>{
+    res.end(JSON.stringify(responseBody));
+    });
+  }
+
+  else if (reqUrl.pathname === "/api/getpolitician"){
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
     
-  } else if (reqUrl.pathname === "/api/gettweets") {
-      const urlParams = reqUrl.query;
-      const searchTerm = urlParams['politiker'.toString()];
-      res.statusCode = 200;
-      res.write("Tweets");
-      res.end();
-  } else {
+    const getPoliticians = require('./riksdagsrequest.js');
+    getPoliticians.getRiksdagsledamot().then(responseBody => {
+      res.end(JSON.stringify(responseBody));
+    });
+  }
+
+  else {
       res.statusCode = 404;
       res.write("404 Not Found");
       res.end();
   };
   
-
   //res.end('Hello World');
 });
-
-
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
@@ -50,6 +65,12 @@ function fileStreamPromise(path) {
   });
 }
 
+/*
+Code example:
+Code retrieves the following:
+First and last name of an MP
+Political party 
+
 
 const riksDagRequest =  require('./riksdagsrequest.js');
 const mpCount = 349;
@@ -58,19 +79,23 @@ riksDagRequest.getRiksdagsledamot().then(json => {
   for (var i = 0; i < mpCount; i++) {
     console.log('Namn:' + json['personlista']['person'][i]['tilltalsnamn'] + ' ' + json['personlista']['person'][i]['efternamn']);
     console.log('Parti: ' + json['personlista']['person'][i]['parti']);
-    console.log('NBR#' + (i + 1));
     console.log('\n');
   }
 });
 
+*/ 
 
 
-function setInputQuery(inputName){
-  input = inputName;
-}
+/*
+Code example:
+Code retrieves the following 
+Author name 
+Content of the tweet
 
-// change value of input to get tweets where the value of input is mentioned.
-setInputQuery('joe biden');
+User name is retrieved by "joining" userID and authorID where they are equal, similar to join statements in sql.
+select Data.Tweets, User.Username
+from Data 
+join User on Data.authorID=User.userID;
 
 
 
@@ -86,7 +111,6 @@ console.log('\nNumber of results:  ' + tweetCount + '\n');
 
         if(userID === authorID){
           var userName = json['includes']['users'][i]['username'];
-          console.log('Tweet: ' + (i + 1))
           console.log('Author: ' + userName)
         }
 
@@ -94,3 +118,4 @@ console.log('\nNumber of results:  ' + tweetCount + '\n');
       console.log('\n\n')
       }
 });
+*/

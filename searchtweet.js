@@ -26,6 +26,7 @@ async function twitterSearchQuery(fullName){
     })
 
     if(res.body){
+        //console.log('returning' + res.body['data'])
         return res.body;
     } else {
         throw new Error('Unsuccessful request');

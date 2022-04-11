@@ -29,24 +29,8 @@ async function getTweets(fullName){
     })
 
     if(res.body){
-        /*
-        var tweetCount = json['meta']['result_count'].valueOf();
-
-            for ( var i = 0; i < tweetCount - 1; i++){
-                var userID = res.body['data'][i]['author_id'].valueOf();
-                var authorID =  res.body['includes']['users'][i]['id'].valueOf();
-
-                if(userID === authorID){
-                    var userName = res.body['includes']['users'][i]['username'];
-                    console.log('Author: ' + userName)
-                }
-            console.log((i + 1) + ') ' + 
-            res.body['data'][i]['text']);
-            console.log('\n\n')
-            }
-            */
-
-       return res.body;
+        console.log(returning + res.body)
+        return res.body;
     } else {
         throw new Error('Unsuccessful request');
     }
