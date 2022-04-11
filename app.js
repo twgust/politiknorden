@@ -17,10 +17,13 @@ server.listen(port, hostname, () => {
 });
 
 
+
 const riksDagRequest =  require('./riksdagsrequest.js');
 const mpCount = 349;
 riksDagRequest.getRiksdagsledamot().then(json => {
+  console.log(json.valueOf());
   for (var i = 0; i < mpCount; i++) {
+    console.log('json')
     console.log('Namn:' + json['personlista']['person'][i]['tilltalsnamn'] + ' ' + json['personlista']['person'][i]['efternamn']);
     console.log('Parti: ' + json['personlista']['person'][i]['parti']);
     console.log('NBR#' + (i + 1));
@@ -29,12 +32,14 @@ riksDagRequest.getRiksdagsledamot().then(json => {
 });
 
 
+
 function setInputQuery(inputName){
   input = inputName;
 }
 
 // change value of input to get tweets where the value of input is mentioned.
-setInputQuery('carl bildt');
+setInputQuery('joe biden');
+
 
 
 const searchtweet = require('./searchtweet.js');
