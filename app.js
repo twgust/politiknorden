@@ -11,20 +11,39 @@ const server = http.createServer((req, res) => {
     const htmlFile = 'index.html';
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
-    fs.createReadStream(htmlFile).pipe(res);
+
+    function htmlStream() {
+      return new Promise((resolve, reject) => {
+      let stream = fs.createReadStream(htmlFile);
+      let data = "";
+      stream.on("data", chunk => data += chunk);
+      stream.on("end", () => resolve(data));
+      stream.on("error", error => reject(error));
+      });
+    }
+    async function writeResponse() {
+      res.write(await htmlStream())
+      res.end();
+    }
+    writeResponse();
+    
   } else if (reqUrl.pathname === "/api/gettweets") {
       const urlParams = reqUrl.query;
       const searchTerm = urlParams['politiker'.toString()];
       res.statusCode = 200;
       res.write("Tweets");
+      res.end();
   } else {
       res.statusCode = 404;
       res.write("404 Not Found");
+      res.end();
   };
-  res.end();
+  
 
   //res.end('Hello World');
 });
+
+
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
