@@ -56,7 +56,6 @@ const mpCount = 349;
 riksDagRequest.getRiksdagsledamot().then(json => {
   console.log(json.valueOf());
   for (var i = 0; i < mpCount; i++) {
-    console.log('json')
     console.log('Namn:' + json['personlista']['person'][i]['tilltalsnamn'] + ' ' + json['personlista']['person'][i]['efternamn']);
     console.log('Parti: ' + json['personlista']['person'][i]['parti']);
     console.log('NBR#' + (i + 1));
