@@ -1,14 +1,28 @@
 const http = require('http');
 const fs = require('fs');
+const url = require('url')
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-  const htmlFile = 'index.html';
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
-  fs.createReadStream(htmlFile).pipe(res);
+  const reqUrl = url.parse(req.url,true);
+  if (reqUrl.pathname === "/") {
+    const htmlFile = 'index.html';
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/html');
+    fs.createReadStream(htmlFile).pipe(res);
+  } else if (reqUrl.pathname === "/api/gettweets") {
+      const urlParams = reqUrl.query;
+      const searchTerm = urlParams['politiker'.toString()];
+      res.statusCode = 200;
+      res.write("Tweets");
+  } else {
+      res.statusCode = 404;
+      res.write("404 Not Found");
+  };
+  res.end();
+
   //res.end('Hello World');
 });
 
