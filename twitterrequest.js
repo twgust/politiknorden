@@ -29,7 +29,6 @@ async function getTweets(fullName){
     })
 
     if(res.body){
-        console.log(returning + res.body)
         return res.body;
     } else {
         throw new Error('Unsuccessful request');

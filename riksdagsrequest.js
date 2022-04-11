@@ -3,6 +3,9 @@ const https = require('http');
 
 module.exports = {
     getRiksdagsledamot: function(channelID) {
+        console.log('Retrieving data from data.riksdagen.se ...')
+        var timeStart = Date.now();
+
         //return a Promise object
         return new Promise(function (resolve, reject) {
             const options = {
@@ -19,6 +22,11 @@ module.exports = {
                 res.on('end', () => {
                     try {
                         resolve(JSON.parse(body));
+                        var timeEnd = Date.now();
+                        var totalTime = (timeEnd - timeStart);
+                        console.log('Successfully retrieved data from data.riksdagen.se in ' + (totalTime / 1000)
+                           + ' seconds...');
+
                     } catch (error) {
                         reject(error);
                     };
