@@ -7,25 +7,15 @@ const port = 3000;
 
 const server = http.createServer((req, res) => {
   const reqUrl = url.parse(req.url,true);
+  async function writeResponseFromFile(path) {
+    res.write(await fileStreamPromise(path))
+    res.end();
+  }
   if (reqUrl.pathname === "/") {
     const htmlFile = 'index.html';
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
-
-    function htmlStream() {
-      return new Promise((resolve, reject) => {
-      let stream = fs.createReadStream(htmlFile);
-      let data = "";
-      stream.on("data", chunk => data += chunk);
-      stream.on("end", () => resolve(data));
-      stream.on("error", error => reject(error));
-      });
-    }
-    async function writeResponse() {
-      res.write(await htmlStream())
-      res.end();
-    }
-    writeResponse();
+    writeResponseFromFile(htmlFile);
     
   } else if (reqUrl.pathname === "/api/gettweets") {
       const urlParams = reqUrl.query;
@@ -49,6 +39,16 @@ server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 
+
+function fileStreamPromise(path) {
+  return new Promise((resolve, reject) => {
+  let stream = fs.createReadStream(path);
+  let data = "";
+  stream.on("data", chunk => data += chunk);
+  stream.on("end", () => resolve(data));
+  stream.on("error", error => reject(error));
+  });
+}
 
 
 const riksDagRequest =  require('./riksdagsrequest.js');
