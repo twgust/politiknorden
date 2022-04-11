@@ -10,6 +10,10 @@ const endpointUrl = "https://api.twitter.com/2/tweets/search/recent";
 module.exports.twitterSearchQuery = twitterSearchQuery;
 
 async function twitterSearchQuery(fullName){
+    console.log(`Retrieving data from Twitter's API ...`);
+    console.log(`Twitter Search Query: ` + fullName);
+    var timeStart = Date.now();
+
     const params = {
         // https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query
         'query': `${fullName} (lang:sv) -is:retweet`,
@@ -26,8 +30,13 @@ async function twitterSearchQuery(fullName){
     })
 
     if(res.body){
+        var timeEnd = Date.now();
+        var totalTime = (timeEnd - timeStart);
+        console.log(`Successfully retrieved data from Twitter's API in ` + (totalTime / 1000)
+        +  ' seconds... ');
         //console.log('returning' + res.body['data'])
         return res.body;
+
     } else {
         throw new Error('Unsuccessful request');
     }
