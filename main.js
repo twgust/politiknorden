@@ -1,7 +1,7 @@
 $(document).ready(function() {
     getLedamot();
     function getLedamot(){
-        let url ="https://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista"
+        let url ="http://127.0.0.1:3000/api/getpolitician"
         $.ajax({
             method:'GET',
             url:url ,
@@ -61,7 +61,4 @@ $(document).ready(function() {
             console.log("Error");
         });
     }
-
-    
-
 });

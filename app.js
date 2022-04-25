@@ -14,11 +14,18 @@ const server = http.createServer((req, res) => {
   }
 
   if (reqUrl.pathname === "/") {
+    const mainjs = "main.js"
     const htmlFile = 'index.html';
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
     writeResponseFromFile(htmlFile);
-  } 
+  }
+  else if (reqUrl.pathname === "/main.js"){
+    const mainjs = "main.js";
+    res.statusCode = 200;
+    writeResponseFromFile(mainjs);
+
+  }
 
   else if (reqUrl.pathname === "/api/gettweets") {
     const urlParams = reqUrl.query;
@@ -37,6 +44,7 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(jsonObject));
   }
+
 
   else {
       res.statusCode = 404;
