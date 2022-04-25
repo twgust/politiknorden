@@ -14,7 +14,6 @@ const server = http.createServer((req, res) => {
   }
 
   if (reqUrl.pathname === "/") {
-    const mainjs = "main.js"
     const htmlFile = 'index.html';
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
