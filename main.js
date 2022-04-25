@@ -41,7 +41,12 @@ $(document).ready(function() {
 			  <tbody>
 				<tr>
 				  <th scope="row" id="">1</th>
-				  <td>example1</td>
+				  <td>example1</td>${
+                $.each(ledamot, function (i,person){
+                    if(person.parti===parti){
+                        console.log(person.tilltalsnamn)
+                    }
+                })}
 				</tr>
 				<tr>
 				  <th scope="row" id="">2</th>
