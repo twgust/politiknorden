@@ -19,6 +19,11 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/html');
     writeResponseFromFile(htmlFile);
   }
+  else if (reqUrl.pathname === "/index.js"){
+    const indexjs = "index.js";
+    res.statusCode = 200;
+    writeResponseFromFile(indexjs);
+  }
   else if (reqUrl.pathname === "/main.js"){
     const mainjs = "main.js";
     res.statusCode = 200;
