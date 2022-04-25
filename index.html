@@ -21,6 +21,17 @@ $(document).ready(function(){
 		  return new bootstrap.Collapse(collapseEl)
 	})
 </script>
+<script>
+  $(function() {    
+    $('#filter1').change(function() { 
+        $("#table td.col4:contains('" + $(this).val() + "')").parent().show();
+        $("#table td.col4:not(:contains('" + $(this).val() + "'))").parent().hide();
+        $($(this).val()==='').children().show();
+    });
+    
+});
+</script>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -43,14 +54,34 @@ $(document).ready(function(){
 
 	
 	<h4 class="mt-3">Politiker Lista :</h4>
-	<div class="accordion" id="accordionExample">
-		<div class="accordion-item " id="accordionItem">
-		
-
-		
-	  </div>
-				
-			</div>
+  
+	<table class=" table" id="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">
+          <select class="form-select" id='filter1' aria-label="Default select example" >
+          <option selected value="">Party</option>
+          <option value="V">V</option>
+          <option value="S ">S</option>
+          <option value="MP">MP</option>
+          <option value="C">C</option>
+          <option value="L">L</option>
+          <option value="M ">M</option>
+          <option value="KD">KD</option>
+          <option value="SD">SD</option>
+          <option value="-">-</option>
+        </select>
+      </th>
+      </tr>
+    </thead>
+    <tbody id="memberTable">
+     
+     
+    </tbody>
+  </table>
 		  </div>
 		
 		
@@ -85,7 +116,7 @@ $(document).ready(function(){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	
 	<script src="main.js"></script>
-
+  
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
