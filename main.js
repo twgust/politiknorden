@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    
 	getLedamot();
     function getLedamot(){
         let url ="http://127.0.0.1:3000/api/getpolitician"
@@ -10,17 +10,18 @@ $(document).ready(function() {
         }).done(function(data){
             let ledamot= data.personlista.person;
             let output= '';
-
+            
 			$.each(ledamot, function(i, person){
 
 				output +=`
-			<tr>
+			<tr class='open_tweet'>
 			<th scope="row" class='col1'>${i}</th>
-			<td class='col2'><a class='text-decoration-none link-dark' href="#">${person.tilltalsnamn}</a></td>
-			<td class='col3'><a class='text-decoration-none link-dark' href="#">${person.efternamn}</a></td>
-			<td class='col4'><a >${person.parti +'  '}</a> </td>
+			<td class='col2'><a class='text-decoration-none link-dark firstName'  href="#">${person.tilltalsnamn}</a></td>
+			<td class='col3'><a class='text-decoration-none link-dark secondName' href="#">${person.efternamn}</a></td>
+			<td class='col4'>${person.parti +'  '}</td>
 			</tr>
                `;
+               
 			})
 
 		$('#memberTable').html(output);
@@ -28,4 +29,23 @@ $(document).ready(function() {
             console.log("Error");
         });
 	}
-});
+  
+    $( document ).on( "click",'tr[class^="open_tweet"]', function() {
+        personName = $('.firstName',this).text()+$('.secondName',this).text();
+        getTweet(personName);
+    });
+
+        function getTweet(personName) {
+            let url ="http://127.0.0.1:3000/api/gettweets?politiker="+ personName
+            $.ajax({
+                method:'GET',
+                url:url ,
+                type:"JSON"
+            }).done(function(data){
+                
+                console.log(data);
+        })
+       
+      };
+
+    });
