@@ -26,7 +26,7 @@ $(document).ready(function() {
 
 		$('#memberTable').html(output);
         }).fail(function(data){
-            console.log("Error");
+            alert("Error, No data received!");
         });
 	}
   
@@ -44,6 +44,9 @@ $(document).ready(function() {
             }).done(function(data){
                 
                 console.log(data);
+
+            }).fail(function(data){
+                alert("Error, No tweet received!");
         })
        
       };
