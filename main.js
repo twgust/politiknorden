@@ -42,9 +42,35 @@ $(document).ready(function() {
                 url:url ,
                 type:"JSON"
             }).done(function(data){
-                
-                console.log(data);
+                let allTweets= data.data
+                let tweetOut = '';
 
+                if (allTweets== undefined){
+                    tweetOut += `
+                    <div class='container bg-light mb-3' id=''>
+		            <h6> ### </h6>  <div id=''>No Tweets Found </div> <div id=''></div>
+                    </div>
+
+                    `;
+
+                $('#tweetbox').html(tweetOut);
+                }else{
+
+                
+                $.each(allTweets, function(i,tweet){
+
+                    tweetOut += `
+                    <div class='container bg-light mb-3' id=''>
+		            <h6> ${tweet.created_at} </h6>  <div id=''>${tweet.text}</div> <div id=''>id = ${tweet.id}</div>
+                    </div>
+
+                    `;
+
+                })
+
+                $('#tweetbox').html(tweetOut);
+                console.log(allTweets);
+            }
             }).fail(function(data){
                 alert("Error, No tweet received!");
         })
