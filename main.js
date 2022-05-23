@@ -47,8 +47,8 @@ $(document).ready(function() {
 
                 if (allTweets== undefined){
                     tweetOut += `
-                    <div class='container bg-light mb-3' id=''>
-		            <h6> ### </h6>  <div id=''>No Tweets Found </div> <div id=''></div>
+                    <div class='container bg-light mb-3'>
+		            <h6> --§-- </h6>  <div class="font-monospace fs-4">No Tweets Found </div> <div >--§--</div>
                     </div>
 
                     `;
@@ -58,13 +58,15 @@ $(document).ready(function() {
 
                 
                 $.each(allTweets, function(i,tweet){
+                    if(i<5){
 
                     tweetOut += `
                     <div class='container bg-light mb-3' id=''>
-		            <h6> ${tweet.created_at} </h6>  <div id=''>${tweet.text}</div> <div id=''>id = ${tweet.id}</div>
+		            <h6><span class='fw-bold text-muted'>Date:</span> ${tweet.created_at} </h6>  <div id=''>${tweet.text}</div> <div id=''> <span class='fw-bold text-muted'>ID:</span>${tweet.id}</div>
                     </div>
 
                     `;
+                }
 
                 })
 
