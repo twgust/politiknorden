@@ -48,7 +48,7 @@ $(document).ready(function() {
                 if (allTweets== undefined){
                     tweetOut += `
                     <div class='container bg-light  '>
-		            <h6 > --§-- </h6>  <div class="font-monospace fs-4">No Tweets Found </div> <div >--§--</div>
+		            <h6 > --§-- </h6>  <div class="font-monospace fs-4">No tweet by "${personName}" has been found.</div> <div >--§--</div>
                     </div>
 
                     `;
