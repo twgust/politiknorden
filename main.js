@@ -55,6 +55,8 @@ $(document).ready(function() {
             })
         }
         function getTweet(personName) {
+            var personNameWithSpaces = personName.replace(/([a-zåäö])([A-ZÅÄÖ])/g, '$1 $2');
+            personNameWithSpaces = personNameWithSpaces.replace(/([A-ZÅÄÖ])([A-ZÅÄÖ][a-zåäö])/g, '$1 $2');
             let url ="http://127.0.0.1:3000/api/gettweets?politiker="+ personName
             $.ajax({
                 method:'GET',
@@ -63,12 +65,11 @@ $(document).ready(function() {
             }).done(function(data){
                 let allTweets= data.data
                 let tweetOut = '';
-
                 if (allTweets== undefined){
                     tweetOut += `
                     <div class='container bg-light  '>
-		            <h6 > --§-- </h6>  <div class="font-monospace fs-4">No tweet by "${personName}" has been found.</div> 
-                    <p class='fs-5'>But you won't leave empty handed. Here is some news from SVPOL:</p>
+		            <h6 > --§-- </h6>  <div class="font-monospace fs-4">No tweet by "${personNameWithSpaces}" has been found.</div> 
+                    <p class='fs-5'>But you won't leave empty handed. Here are some tweets from SVPOL:</p>
                     <div >--§--</div>
                     </div>
                     <div id= 'svbox' class='container shadow  pt-3 pb-3'  ></div>

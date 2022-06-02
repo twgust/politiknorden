@@ -33,10 +33,11 @@ const server = http.createServer((req, res) => {
 
   else if (reqUrl.pathname === "/api/gettweets") {
     const urlParams = reqUrl.query;
-    const searchTerm = urlParams['politiker'.toString()];
+    searchTerm = urlParams['politiker'.toString()];
+    searchTerm = searchTerm.replace(/([a-zåäö])([A-ZÅÄÖ])/g, '$1 $2');
+    searchTerm = searchTerm.replace(/([A-ZÅÄÖ])([A-ZÅÄÖ][a-zåäö])/g, '$1 $2');
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
-
     const searchtweet = require('./searchtweet.js');
     searchtweet.twitterSearchQuery(searchTerm).then(responseBody=>{
     res.end(JSON.stringify(responseBody));
