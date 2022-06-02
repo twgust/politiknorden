@@ -35,6 +35,25 @@ $(document).ready(function() {
         getTweet(personName);
     });
 
+        function svpol (){
+            let url2= "http://127.0.0.1:3000/api/gettweets?politiker="+ 'svpol'
+            $.ajax({
+                method:'GET',
+                url:url2,
+                type:'JSON'
+            }).done(function (data){
+                let svepol=data.data;
+                svpolOut='';
+                $.each(svepol, function(i,svtweet){
+                    if(i<5){
+                        svpolOut +=`
+                        <h6 class=' bg-light' > <span class='fs-5'>#svpol ${i+1}:</span> ${svtweet.text}</h6>
+                        `
+                    $('#svbox').html(svpolOut);
+                    }
+                })
+            })
+        }
         function getTweet(personName) {
             let url ="http://127.0.0.1:3000/api/gettweets?politiker="+ personName
             $.ajax({
@@ -48,12 +67,18 @@ $(document).ready(function() {
                 if (allTweets== undefined){
                     tweetOut += `
                     <div class='container bg-light  '>
-		            <h6 > --§-- </h6>  <div class="font-monospace fs-4">No tweet by "${personName}" has been found.</div> <div >--§--</div>
+		            <h6 > --§-- </h6>  <div class="font-monospace fs-4">No tweet by "${personName}" has been found.</div> 
+                    <p class='fs-5'>But you won't leave empty handed. Here is some news from SVPOL:</p>
+                    <div >--§--</div>
                     </div>
+                    <div id= 'svbox' class='container shadow  pt-3 pb-3'  ></div>
 
                     `;
 
                 $('#tweetbox').html(tweetOut);
+                svpol();
+
+                
                 }else{
 
                 
@@ -71,7 +96,6 @@ $(document).ready(function() {
                 })
 
                 $('#tweetbox').html(tweetOut);
-                console.log(allTweets);
             }
             }).fail(function(data){
                 alert("Error, No tweet received!");
