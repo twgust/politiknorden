@@ -1,0 +1,270 @@
+{
+        "hangar_guid": "8d8dfb57-d0d3-45aa-8e3f-87b28bbfad75",
+        "sourceid": "5ecb17ba-ebbe-4958-a142-a5134aff9808",
+        "intressent_id": "051207517226",
+        "hangar_id": "2369324",
+        "fodd_ar": "1979",
+        "kon": "man",
+        "efternamn": "Åkesson",
+        "tilltalsnamn": "Jimmie",
+        "sorteringsnamn": "Åkesson,Jimmie",
+        "iort": "",
+        "parti": "SD",
+        "valkrets": "Jönköpings län",
+        "status": "Tjänstgörande riksdagsledamot",
+        "person_url_xml": "http://data.riksdagen.se/person/5ecb17ba-ebbe-4958-a142-a5134aff9808",
+        "bild_url_80": "http://data.riksdagen.se/filarkiv/bilder/ledamot/5ecb17ba-ebbe-4958-a142-a5134aff9808_80.jpg",
+        "bild_url_192": "http://data.riksdagen.se/filarkiv/bilder/ledamot/5ecb17ba-ebbe-4958-a142-a5134aff9808_192.jpg",
+        "bild_url_max": "http://data.riksdagen.se/filarkiv/bilder/ledamot/5ecb17ba-ebbe-4958-a142-a5134aff9808_max.jpg",
+        "personuppdrag": {
+          "uppdrag": [
+            {
+              "organ_kod": "SD",
+              "roll_kod": "Partiledare",
+              "ordningsnummer": "0",
+              "status": "",
+              "typ": "partiuppdrag",
+              "from": "2005-05-07",
+              "tom": "",
+              "uppgift": [
+                "Sverigedemokraterna"
+              ],
+              "intressent_id": "051207517226",
+              "hangar_id": "2369324",
+              "sortering": "20",
+              "organ_sortering": "",
+              "uppdrag_rollsortering": "90",
+              "uppdrag_statussortering": "90"
+            },
+            {
+              "organ_kod": "kam",
+              "roll_kod": "Riksdagsledamot",
+              "ordningsnummer": "253",
+              "status": "Tjänstgörande",
+              "typ": "kammaruppdrag",
+              "from": "2018-09-24",
+              "tom": "2022-09-26 10:59:00",
+              "uppgift": [
+                {}
+              ],
+              "intressent_id": "051207517226",
+              "hangar_id": "2369324",
+              "sortering": "10",
+              "organ_sortering": "10",
+              "uppdrag_rollsortering": "60",
+              "uppdrag_statussortering": "10"
+            },
+            {
+              "organ_kod": "kam",
+              "roll_kod": "Riksdagsledamot",
+              "ordningsnummer": "290",
+              "status": "Tjänstgörande",
+              "typ": "kammaruppdrag",
+              "from": "2015-04-01",
+              "tom": "2018-09-24 23:59:00",
+              "uppgift": [
+                {}
+              ],
+              "intressent_id": "051207517226",
+              "hangar_id": "2369324",
+              "sortering": "10",
+              "organ_sortering": "10",
+              "uppdrag_rollsortering": "60",
+              "uppdrag_statussortering": "10"
+            },
+            {
+              "organ_kod": "kam",
+              "roll_kod": "Riksdagsledamot",
+              "ordningsnummer": "290",
+              "status": "Ledig",
+              "typ": "kammaruppdrag",
+              "from": "2014-10-22",
+              "tom": "2015-03-31 23:59:00",
+              "uppgift": [
+                "Fredrik Eriksson 2014-10-22 - 2014-12-21, Heidi Karlsson 2014-12-22 - 2015-03-31  Sjukledighet"
+              ],
+              "intressent_id": "051207517226",
+              "hangar_id": "2369324",
+              "sortering": "10",
+              "organ_sortering": "10",
+              "uppdrag_rollsortering": "60",
+              "uppdrag_statussortering": "30"
+            },
+            {
+              "organ_kod": "kam",
+              "roll_kod": "Riksdagsledamot",
+              "ordningsnummer": "290",
+              "status": "Tjänstgörande",
+              "typ": "kammaruppdrag",
+              "from": "2014-09-29",
+              "tom": "2014-10-21 23:59:00",
+              "uppgift": [
+                {}
+              ],
+              "intressent_id": "051207517226",
+              "hangar_id": "2369324",
+              "sortering": "10",
+              "organ_sortering": "10",
+              "uppdrag_rollsortering": "60",
+              "uppdrag_statussortering": "10"
+            },
+            {
+              "organ_kod": "kam",
+              "roll_kod": "Riksdagsledamot",
+              "ordningsnummer": "327",
+              "status": "Tjänstgörande",
+              "typ": "kammaruppdrag",
+              "from": "2010-10-04",
+              "tom": "2014-09-29 23:59:00",
+              "uppgift": [
+                {}
+              ],
+              "intressent_id": "051207517226",
+              "hangar_id": "2369324",
+              "sortering": "10",
+              "organ_sortering": "10",
+              "uppdrag_rollsortering": "60",
+              "uppdrag_statussortering": "10"
+            },
+            {
+              "organ_kod": "KD",
+              "roll_kod": "Ledamot",
+              "ordningsnummer": "10",
+              "status": "",
+              "typ": "Riksdagsorgan",
+              "from": "2018-10-09",
+              "tom": "2022-10-09 23:59:00",
+              "uppgift": [
+                "Krigsdelegationen"
+              ],
+              "intressent_id": "051207517226",
+              "hangar_id": "2369324",
+              "sortering": "30",
+              "organ_sortering": "300",
+              "uppdrag_rollsortering": "90",
+              "uppdrag_statussortering": "90"
+            },
+            {
+              "organ_kod": "UN",
+              "roll_kod": "Ledamot",
+              "ordningsnummer": "5",
+              "status": "",
+              "typ": "Riksdagsorgan",
+              "from": "2021-12-02 12:01:00",
+              "tom": "2022-10-02 23:59:00",
+              "uppgift": [
+                "Utrikesnämnden"
+              ],
+              "intressent_id": "051207517226",
+              "hangar_id": "2369324",
+              "sortering": "30",
+              "organ_sortering": "300",
+              "uppdrag_rollsortering": "90",
+              "uppdrag_statussortering": "90"
+            },
+            {
+              "organ_kod": "KD",
+              "roll_kod": "Ledamot",
+              "ordningsnummer": "6",
+              "status": "",
+              "typ": "Riksdagsorgan",
+              "from": "2014-10-14",
+              "tom": "2018-10-09 23:59:00",
+              "uppgift": [
+                "Krigsdelegationen"
+              ],
+              "intressent_id": "051207517226",
+              "hangar_id": "2369324",
+              "sortering": "30",
+              "organ_sortering": "300",
+              "uppdrag_rollsortering": "90",
+              "uppdrag_statussortering": "90"
+            },
+            {
+              "organ_kod": "KD",
+              "roll_kod": "Ledamot",
+              "ordningsnummer": "16",
+              "status": "",
+              "typ": "Riksdagsorgan",
+              "from": "2010-10-19",
+              "tom": "2014-10-14 23:59:00",
+              "uppgift": [
+                "Krigsdelegationen"
+              ],
+              "intressent_id": "051207517226",
+              "hangar_id": "2369324",
+              "sortering": "30",
+              "organ_sortering": "300",
+              "uppdrag_rollsortering": "90",
+              "uppdrag_statussortering": "90"
+            }
+          ]
+        },
+        "personuppgift": {
+          "uppgift": [
+            {
+              "kod": "Uppdrag inom riksdag och regering",
+              "uppgift": [
+                "Riksdagsledamot 10-. Ledamot krigsdelegationen 10-. Partiledare Sverigedemokraterna 05-."
+              ],
+              "typ": "biografi",
+              "intressent_id": "",
+              "hangar_id": "2369324"
+            },
+            {
+              "kod": "Utbildning",
+              "uppgift": [
+                "Furulundsskolan, Sölvesborg 95-98. Studier vid Lunds universitet 98-05."
+              ],
+              "typ": "biografi",
+              "intressent_id": "",
+              "hangar_id": "2369324"
+            },
+            {
+              "kod": "Anställningar",
+              "uppgift": [
+                "Webbproduktion/delägare, BMJ Aktiv 00-06."
+              ],
+              "typ": "biografi",
+              "intressent_id": "",
+              "hangar_id": "2369324"
+            },
+            {
+              "kod": "Kommunala uppdrag",
+              "uppgift": [
+                "Kommunfullmäktig, Sölvesborgs kommun 98-. Ledamot, kommunstyrelsen 07-. Ledamot, landstingsfullmäktige, Blekinge 06-10."
+              ],
+              "typ": "biografi",
+              "intressent_id": "",
+              "hangar_id": "2369324"
+            },
+            {
+              "kod": "Uppdrag inom förenings- och näringsliv",
+              "uppgift": [
+                "Förbundsordförande, SDU 00-05. Partiledare, Sverigedemokraterna 05-."
+              ],
+              "typ": "biografi",
+              "intressent_id": "",
+              "hangar_id": "2369324"
+            },
+            {
+              "kod": "Officiell e-postadress",
+              "uppgift": [
+                "jimmie.akesson[på]riksdagen.se"
+              ],
+              "typ": "eadress",
+              "intressent_id": "051207517226",
+              "hangar_id": "2369324"
+            },
+            {
+              "kod": "KandiderarINastaVal",
+              "uppgift": [
+                "true"
+              ],
+              "typ": "val",
+              "intressent_id": "051207517226",
+              "hangar_id": "2369324"
+            }
+          ]
+        }
+      }
