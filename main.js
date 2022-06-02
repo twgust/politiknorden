@@ -68,27 +68,26 @@ $(document).ready(function() {
                 if (allTweets== undefined){
                     tweetOut += `
                     <div class='container bg-light  '>
-		            <h6 > --§-- </h6>  <div class="font-monospace fs-4">No tweet by "${personNameWithSpaces}" has been found.</div> 
+		            <div class="font-monospace fs-4">No tweet by "${personNameWithSpaces}" has been found.</div> 
                     <p class='fs-5'>But you won't leave empty handed. Here are some tweets from SVPOL:</p>
-                    <div >--§--</div>
                     </div>
-                    <div id= 'svbox' class='container shadow  pt-3 pb-3'  ></div>
+                    <div id= 'svbox' class='  pt-3 pb-3'  ></div>
 
                     `;
 
                 $('#tweetbox').html(tweetOut);
                 svpol();
 
-                
                 }else{
 
-                
                 $.each(allTweets, function(i,tweet){
                     if(i<5){
 
                     tweetOut += `
                     <div class='container bg-light mb-3 ' id=''>
-		            <h6 ><span class='fw-bold text-muted'>Date:</span> ${tweet.created_at} </h6>  <div id=''>${tweet.text}</div> <div id=''> <span class='fw-bold text-muted'>ID:</span>${tweet.id}</div>
+		            <h6 ><span class='fw-bold text-muted'>Date:</span> ${tweet.created_at} </h6> 
+                    <div id=''>${tweet.text}</div> 
+                    <div id=''> <span class='fw-bold text-muted'>ID:</span>${tweet.id}</div>
                     </div>
 
                     `;
@@ -99,7 +98,7 @@ $(document).ready(function() {
                 $('#tweetbox').html(tweetOut);
             }
             }).fail(function(data){
-                alert("Error, No tweet received!");
+                alert("Error, No tweet received! or connection failed");
         })
        
       };
