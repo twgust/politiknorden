@@ -7,9 +7,13 @@
 	needle används för Twitter-modulen.
 
 Hämta [node.js](https://nodejs.org/en/download/ "node.js")
+
 Kör installern.
+
 verifiera Node.js installation med kommandot: *node -v*
+
 verifiera Npm installation med  kommandot: *npm -v*
+
 **2) Dependenices**
 
 	  kör npm install needle
@@ -17,8 +21,10 @@ verifiera Npm installation med  kommandot: *npm -v*
    
 ## Kör programmet
 
-		Klona repositoriet
-		Programmet startas genom att köra kommandot  *node app.js*
+Klona repositoriet
+
+Programmet startas genom att köra kommandot  *node app.js*
+
 ![Korrekt output](https://i.imgur.com/W9hQQh7.png)
 
 
