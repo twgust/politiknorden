@@ -1,14 +1,24 @@
 # politiknorden
-Web 
-Hämta alla riksdagsledamöter och visa deras namn, partitillhörighet och annan information som kan vara intressant.
 
-Det ska även att söka efter specifika ledamöter baserat på ex. deras namn. 
+## Installation
+**1) Node.js och NPM package manager**
+	Node.js används för backend servern.
+	Npm hanterar paket och installationer.
+	needle används för Twitter-modulen.
 
-För att se vad som sägs om en vald ledamot kan förslagsvis Twitter användas. 
+		Hämta [node.js](https://nodejs.org/en/download/ "node.js")
+		Kör installern.
+		verifiera Node.js installation med kommandot: *node -v*
+		verifiera Npm installation med  kommandot: *npm -v*
+**2) Dependenices**
 
-För att använda Twitter behöver er applikation autentisera mha OAuth. Mer information på Twitters hemsida. 
+	  kör npm install needle
+	  verifiera installation med **needle -v**
+   
+## Kör programmet
 
-En sökning på vald ledamots namn ska göras på Twitter. 
+		Klona repositoriet
+		Programmet startas genom att köra kommandot  *node app.js*
+		[![image](https://i.imgur.com/W9hQQh7.png "image")](https://i.imgur.com/W9hQQh7.png "image")
 
-Er egna tjänst kan erbjuda information om ledamoten från Riksdagens API tillsammans med de senaste Tweetsen som innehåller ledamotens namn.
-
+## Använd programmet
