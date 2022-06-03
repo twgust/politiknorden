@@ -2,9 +2,10 @@
 
 ## Installation
 **1) Node.js och NPM package manager**
-	Node.js används för backend servern.
-	Npm hanterar paket och installationer.
-	needle används för Twitter-modulen.
+
+Node.js används för backend servern.
+Npm hanterar paket och installationer.
+needle används för Twitter-modulen.
 
 Hämta [node.js](https://nodejs.org/en/download/ "node.js")
 
