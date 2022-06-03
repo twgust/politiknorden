@@ -19,7 +19,7 @@
 
 		Klona repositoriet
 		Programmet startas genom att köra kommandot  *node app.js*
-		![alt text](https://i.imgur.com/W9hQQh7.png)
+		![Korrekt output](https://imgur.com/W9hQQh7)
 
 
 ## Använd programmet
