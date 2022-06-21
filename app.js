@@ -48,8 +48,10 @@ const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
     const searchtweet = require('./searchtweet.js');
+    const processTweet = require('./twitter');
     searchtweet.twitterSearchQuery(searchTerm).then(responseBody=>{
     res.end(JSON.stringify(responseBody));
+      processTweet.processTwitterResponse(responseBody);
     });
   }
 
