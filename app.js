@@ -1,6 +1,8 @@
 const http = require('http');
 const fs = require('fs');
-const url = require('url')
+const url = require('url');
+const { json } = require('express');
+const politician = require('./politician.js');
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -32,9 +34,11 @@ const server = http.createServer((req, res) => {
 
   else if (reqUrl.pathname === "/api/gettweets") {
     const urlParams = reqUrl.query;
-    searchTerm = urlParams['politiker'.toString()];
-    searchTerm = searchTerm.replace(/([a-zåäö])([A-ZÅÄÖ])/g, '$1 $2');
-    searchTerm = searchTerm.replace(/([A-ZÅÄÖ])([A-ZÅÄÖ][a-zåäö])/g, '$1 $2');
+      // searchTerm = urlParams['politiker'.toString()];
+      // searchTerm = searchTerm.replace(/([a-zåäö])([A-ZÅÄÖ])/g, '$1 $2');
+      // searchTerm = searchTerm.replace(/([A-ZÅÄÖ])([A-ZÅÄÖ][a-zåäö])/g, '$1 $2');
+    currPolitician = jsonObject[urlParams['politiker']];
+    searchTerm = currPolitician['name'] + " " + currPolitician['lastName']; 
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
     const searchtweet = require('./searchtweet.js');
