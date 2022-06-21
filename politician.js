@@ -2,7 +2,7 @@
 
 
 module.exports  = {
-     processResponse: function(personList){
+     processRiksdagResponse: function(personList){
          var politicians = [];
          for (var i = 0; i < 349; i++) {
              politicians[i] ={

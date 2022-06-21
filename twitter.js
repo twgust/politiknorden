@@ -1,5 +1,5 @@
 module.exports = {
-    twitter: function(responseBody){
+    processTwitterResponse: function(responseBody){
         var tweets = [];
         let count = responseBody['meta']['result_count'].valueOf();
 
