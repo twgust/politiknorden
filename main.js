@@ -32,12 +32,13 @@ $(document).ready(function() {
   
     $( document ).on( "click",'tr[class^="open_tweet"]', function() {
         // personName = $('.firstName',this).text()+$('.secondName',this).text();
-        personName = $('.polID',this).text();
-        getTweet(personName);
+        personID = $('.polID',this).text();
+        personName = $('.firstName',this).text() + " " + $('.secondName',this).text();
+        getTweet(personID, personName);
     });
 
         function svpol (){
-            let url2= "http://127.0.0.1:3000/api/gettweets?politiker="+ 'svpol'
+            let url2= "http://127.0.0.1:3000/api/gettweets?politiker="+ '349'
             $.ajax({
                 method:'GET',
                 url:url2,
@@ -55,10 +56,8 @@ $(document).ready(function() {
                 })
             })
         }
-        function getTweet(personName) {
-            var personNameWithSpaces = personName.replace(/([a-zåäö])([A-ZÅÄÖ])/g, '$1 $2');
-            personNameWithSpaces = personNameWithSpaces.replace(/([A-ZÅÄÖ])([A-ZÅÄÖ][a-zåäö])/g, '$1 $2');
-            let url ="http://127.0.0.1:3000/api/gettweets?politiker="+ personName
+        function getTweet(personID, personName) {
+            let url ="http://127.0.0.1:3000/api/gettweets?politiker="+ personID
             $.ajax({
                 method:'GET',
                 url:url ,
@@ -69,7 +68,7 @@ $(document).ready(function() {
                 if (allTweets== undefined){
                     tweetOut += `
                     <div class='container bg-light  '>
-		            <div class="font-monospace fs-4">No tweet by "${personNameWithSpaces}" has been found.</div> 
+		            <div class="font-monospace fs-4">No tweet by "${personName}" has been found.</div> 
                     <p class='fs-5'>But you won't leave empty handed. Here are some tweets from SVPOL:</p>
                     </div>
                     <div id= 'svbox' class='  pt-3 pb-3'  ></div>

@@ -34,11 +34,17 @@ const server = http.createServer((req, res) => {
 
   else if (reqUrl.pathname === "/api/gettweets") {
     const urlParams = reqUrl.query;
+    var polID = urlParams['politiker'];
       // searchTerm = urlParams['politiker'.toString()];
       // searchTerm = searchTerm.replace(/([a-zåäö])([A-ZÅÄÖ])/g, '$1 $2');
       // searchTerm = searchTerm.replace(/([A-ZÅÄÖ])([A-ZÅÄÖ][a-zåäö])/g, '$1 $2');
-    currPolitician = jsonObject[urlParams['politiker']];
-    searchTerm = currPolitician['name'] + " " + currPolitician['lastName']; 
+    if (polID > 348) {
+      searchTerm = "svpol"
+    } else if (polID < 349) {
+      console.log(urlParams['politiker']);
+      currPolitician = jsonObject[urlParams['politiker']];
+      searchTerm = currPolitician['name'] + " " + currPolitician['lastName']; 
+    }
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
     const searchtweet = require('./searchtweet.js');
