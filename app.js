@@ -67,8 +67,7 @@ function onStart(){
   const politician = require('./politician.js');
   const getPoliticians = require('./riksdagsrequest.js');
   getPoliticians.getRiksdagsledamot().then(responseBody => {
-      jsonObject = responseBody;
-      politician.processResponse(responseBody)
+      jsonObject = politician.processResponse(responseBody);
     });
 }
 

@@ -12,7 +12,7 @@ module.exports  = {
                  party: personList['personlista']['person'][i]['parti']
              }
          }
-         
+         return politicians;
      }
 
 }
