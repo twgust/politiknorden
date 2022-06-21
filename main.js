@@ -85,7 +85,7 @@ $(document).ready(function() {
 
                     tweetOut += `
                     <div class='container bg-light mb-3 ' id=''>
-		            <h6 ><span class='fw-bold text-muted'>Date:</span> ${tweet.created_at} </h6> 
+		            <h6 ><span class='fw-bold text-muted'>Date:</span> ${tweet.date} </h6> 
                     <div id=''>${tweet.text}</div> 
                     <div id=''> <span class='fw-bold text-muted'>ID:</span>${tweet.id}</div>
                     </div>
