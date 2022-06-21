@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 				output +=`
 			<tr class='open_tweet'>
-			<th scope="row" class='col1'>${i}</th>
+			<th scope="row" class='col1 polID'>${i}</th>
 			<td class='col2'><a class='text-decoration-none link-dark firstName'  href="#">${person.name}</a></td>
 			<td class='col3'><a class='text-decoration-none link-dark secondName' href="#">${person.lastName}</a></td>
 			<td class='col4'>${person.party +'  '}</td>
@@ -31,7 +31,8 @@ $(document).ready(function() {
 	}
   
     $( document ).on( "click",'tr[class^="open_tweet"]', function() {
-        personName = $('.firstName',this).text()+$('.secondName',this).text();
+        // personName = $('.firstName',this).text()+$('.secondName',this).text();
+        personName = $('.polID',this).text();
         getTweet(personName);
     });
 
