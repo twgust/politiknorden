@@ -28,7 +28,6 @@ const server = http.createServer((req, res) => {
     const mainjs = "main.js";
     res.statusCode = 200;
     writeResponseFromFile(mainjs);
-
   }
 
   else if (reqUrl.pathname === "/api/gettweets") {
@@ -65,9 +64,11 @@ server.listen(port, hostname, () => {
 });
 
 function onStart(){
+  const politician = require('./politician.js');
   const getPoliticians = require('./riksdagsrequest.js');
   getPoliticians.getRiksdagsledamot().then(responseBody => {
       jsonObject = responseBody;
+      politician.processResponse(responseBody)
     });
 }
 
@@ -114,14 +115,13 @@ from Data
 join User on Data.authorID=User.userID;
 
 
-
-const searchtweet = require('./searchtweet.js');
-searchtweet.twitterSearchQuery(input).then(json => {
-
-var tweetCount = json['meta']['result_count'].valueOf();
 console.log('\nNumber of results:  ' + tweetCount + '\n');
+const searchtweet = require('./searchtweet.js');
 
+searchtweet.twitterSearchQuery(input).then(json => {
+var tweetCount = json['meta']['result_count'].valueOf();
     for ( var i = 0; i < tweetCount; i++){
+
       var userID = json['data'][i]['author_id'].valueOf();
       var authorID =  json['includes']['users'][i]['id'].valueOf();
 
