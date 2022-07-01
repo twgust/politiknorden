@@ -16,6 +16,7 @@ $(document).ready(function() {
 				output +=`
 			<tr class='open_tweet'>
 			<th scope="row" class='col1 polID'>${i}</th>
+            <th scope="row" class='col1'><p class="bild" hidden="Hidden">${person.picture}</th>
 			<td class='col2'><a class='text-decoration-none link-dark firstName'  href="#">${person.name}</a></td>
 			<td class='col3'><a class='text-decoration-none link-dark secondName' href="#">${person.lastName}</a></td>
 			<td class='col4'>${person.party +'  '}</td>
@@ -34,7 +35,8 @@ $(document).ready(function() {
         // personName = $('.firstName',this).text()+$('.secondName',this).text();
         personID = $('.polID',this).text();
         personName = $('.firstName',this).text() + " " + $('.secondName',this).text();
-        getTweet(personID, personName);
+        tumbNail= $('.bild',this).text();
+        getTweet(personID, personName, tumbNail);
     });
 
         function svpol (){
@@ -56,7 +58,8 @@ $(document).ready(function() {
                 })
             })
         }
-        function getTweet(personID, personName) {
+        function getTweet(personID, personName, tumbNail) {
+            $('#bild').html( '<img class= "shadow-lg rounded float-end border border-secondary border-5" src='+tumbNail+' Show image>' )
             let url ="http://127.0.0.1:3000/api/gettweets?politiker="+ personID
             $.ajax({
                 method:'GET',
