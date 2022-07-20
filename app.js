@@ -1,14 +1,13 @@
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
-const { json } = require('express');
-const politician = require('./politician.js');
 const searchTweet = require('./searchtweet.js');
 const processTweet = require('./twitter');
 
 const hostname = '127.0.0.1';
 const port = 3000;
-var jsonObject = "";
+let riksdagenJSON;
+let riksdagenJSONProcessed;
 
 const server = http.createServer((req, res) => {
   const reqUrl = url.parse(req.url,true);
@@ -47,7 +46,7 @@ const server = http.createServer((req, res) => {
     //if polID is valid search for tweets mentioning the politician corresponding to that ID
     else if (polID < 349) {
       console.log(urlParams['politiker']);
-      const currPolitician = jsonObject[urlParams['politiker']];
+      const currPolitician = riksdagenJSONProcessed[urlParams['politiker']];
       searchTerm = currPolitician['name'] + " " + currPolitician['lastName'];
     }
     res.statusCode = 200;
@@ -61,7 +60,7 @@ const server = http.createServer((req, res) => {
   else if (reqUrl.pathname === "/api/getpolitician"){
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(jsonObject));
+    res.end(JSON.stringify(riksdagenJSONProcessed));
   }
 
 
@@ -69,8 +68,7 @@ const server = http.createServer((req, res) => {
       res.statusCode = 404;
       res.write("404 Not Found");
       res.end();
-  };
-  //res.end('Hello World');
+  }
 });
 
 server.listen(port, hostname, () => {
@@ -82,7 +80,7 @@ function onStart(){
   const politician = require('./politician.js');
   const getPoliticians = require('./riksdagsrequest.js');
   getPoliticians.getRiksdagsledamot().then(responseBody => {
-      jsonObject = politician.processRiksdagResponse(responseBody);
+      riksdagenJSONProcessed = politician.processRiksdagResponse(responseBody);
     });
 }
 
