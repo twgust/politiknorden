@@ -3,6 +3,8 @@ const fs = require('fs');
 const url = require('url');
 const { json } = require('express');
 const politician = require('./politician.js');
+const searchTweet = require('./searchtweet.js');
+const processTweet = require('./twitter');
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -32,24 +34,25 @@ const server = http.createServer((req, res) => {
     writeResponseFromFile(mainjs);
   }
 
+
+  //gets json object of tweets from Twitter API via searchtweet.js and processes it for our own API with twitter.js
   else if (reqUrl.pathname === "/api/gettweets") {
     const urlParams = reqUrl.query;
-    var polID = urlParams['politiker'];
-      // searchTerm = urlParams['politiker'.toString()];
-      // searchTerm = searchTerm.replace(/([a-zåäö])([A-ZÅÄÖ])/g, '$1 $2');
-      // searchTerm = searchTerm.replace(/([A-ZÅÄÖ])([A-ZÅÄÖ][a-zåäö])/g, '$1 $2');
+    const polID = urlParams['politiker'];
+    let searchTerm;
+    //if polID is invalid search for tweets mentioning 'svpol'
     if (polID > 348) {
       searchTerm = "svpol"
-    } else if (polID < 349) {
+    }
+    //if polID is valid search for tweets mentioning the politician corresponding to that ID
+    else if (polID < 349) {
       console.log(urlParams['politiker']);
-      currPolitician = jsonObject[urlParams['politiker']];
-      searchTerm = currPolitician['name'] + " " + currPolitician['lastName']; 
+      const currPolitician = jsonObject[urlParams['politiker']];
+      searchTerm = currPolitician['name'] + " " + currPolitician['lastName'];
     }
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
-    const searchtweet = require('./searchtweet.js');
-    const processTweet = require('./twitter');
-    searchtweet.twitterSearchQuery(searchTerm).then(responseBody=>{
+    searchTweet.twitterSearchQuery(searchTerm).then(responseBody=>{
     res.end(JSON.stringify(responseBody));
       processTweet.processTwitterResponse(responseBody);
     });
