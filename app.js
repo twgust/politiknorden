@@ -3,6 +3,7 @@ const fs = require('fs');
 const url = require('url');
 const searchTweet = require('./searchtweet.js');
 const processTweet = require('./twitter');
+const politicianDetails = require('./politicianDetails.js');
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -63,6 +64,14 @@ const server = http.createServer((req, res) => {
     res.end(JSON.stringify(riksdagenJSONProcessed));
   }
 
+  else if (reqUrl.pathname === "/api/getpoliticiandetails"){
+    const urlParams = reqUrl.query;
+    const polID = urlParams['politiker'];
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(politicianDetails.getPoliticianDetails(riksdagenJSON, polID)));
+  }
+
 
   else {
       res.statusCode = 404;
@@ -80,6 +89,7 @@ function onStart(){
   const politician = require('./politician.js');
   const getPoliticians = require('./riksdagsrequest.js');
   getPoliticians.getRiksdagsledamot().then(responseBody => {
+      riksdagenJSON = responseBody;
       riksdagenJSONProcessed = politician.processRiksdagResponse(responseBody);
     });
 }
