@@ -1,7 +1,7 @@
 # PolitikNörden
 
 ## Installation
-
+### [Git Bash](https://gitforwindows.org/) används för att installera och hantera paket
 ### **1. Node.js och NPM package manager**
 Node.js används för backend servern.
 
@@ -15,10 +15,10 @@ needle används för Twitter-modulen.
 
 ### **2. Dependenices**
 
- #### 2.1 kör npm install needle
- 
- #### 2.2 verifiera installation med **needle -v**
-   
+ #### 2.1 kör 'npm install needle'
+
+ #### 2.2 verifiera installation med **npm needle -v**
+
 ### 3. Kör programmet
 
 #### 3.1 Klona repositoriet
