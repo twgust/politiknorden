@@ -25,6 +25,6 @@ needle används för Twitter-modulen.
 
 #### 3.2 Kör export BEARER_TOKEN='dinTwitterNyckel' i din bash / unix terminal (exempelvis git bash)
 
-#### 3.3 Programmet startas genom att köra kommandot  *node app.js*
+#### 3.3 Programmet startas genom att köra kommandot  *node app.js* i mappen där repositoriet sparats
 
 ![Korrekt output](https://i.imgur.com/W9hQQh7.png)
