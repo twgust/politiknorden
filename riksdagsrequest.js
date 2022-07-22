@@ -1,4 +1,4 @@
-const https = require('http');
+const https = require('https');
 //const convert = require('xml-js');
 
 module.exports = {
@@ -21,12 +21,14 @@ module.exports = {
                 });
                 res.on('end', () => {
                     try {
+                        console.log(body);
                         resolve(JSON.parse(body));
                         var timeEnd = Date.now();
                         var totalTime = (timeEnd - timeStart);
                         console.log('\nSuccessfully retrieved data from data.riksdagen.se in ' + (totalTime / 1000)
                            + ' seconds...');
                     } catch (error) {
+                        console.log('error');
                         reject(error);
                     };
 
@@ -34,7 +36,7 @@ module.exports = {
                 res.on('error', function(error) {
                     reject(error);
                 })
-          
+
             });
             req.end();
 
