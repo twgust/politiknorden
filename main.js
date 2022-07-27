@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+    /* ----------------- getting the list of parliament members ----------------- */
 	getLedamot();
     function getLedamot(){
         let url ="http://127.0.0.1:3000/api/getpolitician"
@@ -10,7 +10,6 @@ $(document).ready(function() {
         }).done(function(data){
             let ledamot= data;
             let output= '';
-            
 			$.each(ledamot, function(i, person){
 
 				output +=`
@@ -22,7 +21,6 @@ $(document).ready(function() {
 			<td class='col4'>${person.party +'  '}</td>
 			</tr>
                `;
-               
 			})
 
 		$('#memberTable').html(output);
@@ -30,15 +28,41 @@ $(document).ready(function() {
             alert("Error, No data received!");
         });
 	}
-  
+  /* ------------------------- opening tweets on click ------------------------ */
     $( document ).on( "click",'tr[class^="open_tweet"]', function() {
         // personName = $('.firstName',this).text()+$('.secondName',this).text();
         personID = $('.polID',this).text();
         personName = $('.firstName',this).text() + " " + $('.secondName',this).text();
         tumbNail= $('.bild',this).text();
+        getDetail(personID)
         getTweet(personID, personName, tumbNail);
     });
-
+    /* --------------------------- Get person details --------------------------- */
+    function getDetail(personID){
+        let urlD= "http://127.0.0.1:3000/api/getpoliticiandetails?politiker="+ personID
+        $.ajax({
+            method:'GET',
+            url:urlD,
+            type:'JSON'
+        }).done(function (data){
+            let details = data;
+            console.log(details);
+            detail='';
+            detail+= `
+            <div class='container bg-light  '>
+            <div class=" fs-5 fw-bold mt-1 mb-1">${details.name} ${details.lastName}</div> 
+            <p class='fs-6 fst-italic mb-0'><span class='badge bg-secondary text-warning text-wrap fw-bold fst-normal lh-1'>Party </span> ${details.party}</p>
+            <p class='fs-6 fst-italic mb-0'><span class='badge bg-secondary text-warning text-wrap fw-bold fst-normal lh-1'>Valkrets</span> ${details.valkrets}</p>
+            <p class='fs-6 fst-italic mb-0'><span class='badge bg-secondary text-warning text-wrap fw-bold fst-normal lh-1'>Uppgiftkod</span> ${details.uppgiftKod}</p>
+            <p class='fs-6 fst-italic mb-3'><span class='badge bg-secondary text-warning text-wrap fw-bold fst-normal lh-1'>Uppgift</span> ${details.uppgiftText}</p>
+           
+            </div>
+           
+                    `;
+            $('#detail').html(detail);
+        })
+    }
+/* ------------------------- getting data from SVPOL ------------------------ */
         function svpol (){
             let url2= "http://127.0.0.1:3000/api/gettweets?politiker="+ '349'
             $.ajax({
@@ -51,13 +75,14 @@ $(document).ready(function() {
                 $.each(svepol, function(i,svtweet){
                     if(i<5){
                         svpolOut +=`
-                        <h6 class=' bg-light' > <span class='fs-5'>#svpol ${i+1}:</span> ${svtweet.text}</h6>
+                        <h6 class=' bg-light' > <span class='fs-5 fst-italic'>#svpol ${i+1}:</span> ${svtweet.text}</h6>
                         `
                     $('#svbox').html(svpolOut);
                     }
                 })
             })
         }
+        /* --------------- manipulating DOM to show Tweets and picture -------------- */
         function getTweet(personID, personName, tumbNail) {
             $('#bild').html( '<img class= "shadow-lg rounded float-end border border-secondary border-5" src='+tumbNail+' Show image>' )
             let url ="http://127.0.0.1:3000/api/gettweets?politiker="+ personID
@@ -68,11 +93,12 @@ $(document).ready(function() {
             }).done(function(data){
                 let allTweets= data.data
                 let tweetOut = '';
+                /* --------------------------- if no tweets found --------------------------- */
                 if (allTweets== undefined){
                     tweetOut += `
-                    <div class='container bg-light  '>
-		            <div class="font-monospace fs-4">No tweet by "${personName}" has been found.</div> 
-                    <p class='fs-5'>But you won't leave empty handed. Here are some tweets from SVPOL:</p>
+                    <div class='container bg-light '>
+		            <div class="font-monospace fs-5">¤ No tweet by "${personName}" has been found.</div> 
+                    <p class='fs-6'>But you won't leave empty handed. Here are some tweets from SVPOL:</p>
                     </div>
                     <div id= 'svbox' class='  pt-3 pb-3'  ></div>
 
@@ -82,7 +108,7 @@ $(document).ready(function() {
                 svpol();
 
                 }else{
-
+/* ----------------------------- showing tweets ----------------------------- */
                 $.each(allTweets, function(i,tweet){
                     if(i<5){
 
