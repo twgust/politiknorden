@@ -1,5 +1,7 @@
 $(document).ready(function() {
-    /* ----------------- getting the list of parliament members ----------------- */
+    /* -------------------------------------------------------------------------- */
+    /*                   getting the list of parliament members                   */
+    /* -------------------------------------------------------------------------- */
 	getLedamot();
     function getLedamot(){
         let url ="http://127.0.0.1:3000/api/getpolitician"
@@ -28,14 +30,16 @@ $(document).ready(function() {
             alert("Error, No data received!");
         });
 	}
-  /* ------------------------- opening tweets on click ------------------------ */
+    /* -------------------------------------------------------------------------- */
+    /*                           opening tweets on click                          */
+    /* -------------------------------------------------------------------------- */
     $( document ).on( "click",'tr[class^="open_tweet"]', function() {
         // personName = $('.firstName',this).text()+$('.secondName',this).text();
         personID = $('.polID',this).text();
         personName = $('.firstName',this).text() + " " + $('.secondName',this).text();
         tumbNail= $('.bild',this).text();
         getDetail(personID)
-        getTweet(personID, personName, tumbNail);
+        getTweet(personID, personName);
     });
     /* --------------------------- Get person details --------------------------- */
     function getDetail(personID){
@@ -46,10 +50,12 @@ $(document).ready(function() {
             type:'JSON'
         }).done(function (data){
             let details = data;
-            console.log(details);
+            
+            
             detail='';
             detail+= `
-            <div class='container bg-light  '>
+            <div class='card-body container bg-light  '>
+            <img class= "img-thumbnail  rounded float-end " src='${details.picture}' Show image style='width:100px;'>
             <div class=" fs-5 fw-bold mt-1 mb-1">${details.name} ${details.lastName}</div> 
             <p class='fs-6 fst-italic mb-0'><span class='badge bg-secondary text-warning text-wrap fw-bold fst-normal lh-1'>Party </span> ${details.party}</p>
             <p class='fs-6 fst-italic mb-0'><span class='badge bg-secondary text-warning text-wrap fw-bold fst-normal lh-1'>Valkrets</span> ${details.valkrets}</p>
@@ -59,10 +65,11 @@ $(document).ready(function() {
             </div>
            
                     `;
+           
             $('#detail').html(detail);
         })
     }
-/* ------------------------- getting data from SVPOL ------------------------ */
+    /* ------------------------- getting data from SVPOL ------------------------ */
         function svpol (){
             let url2= "http://127.0.0.1:3000/api/gettweets?politiker="+ '349'
             $.ajax({
@@ -82,9 +89,11 @@ $(document).ready(function() {
                 })
             })
         }
-        /* --------------- manipulating DOM to show Tweets and picture -------------- */
-        function getTweet(personID, personName, tumbNail) {
-            $('#bild').html( '<img class= "shadow-lg rounded float-end border border-secondary border-5" src='+tumbNail+' Show image>' )
+        /* -------------------------------------------------------------------------- */
+        /*                 manipulating DOM to show Tweets and picture                */
+        /* -------------------------------------------------------------------------- */
+        function getTweet(personID, personName) {
+            
             let url ="http://127.0.0.1:3000/api/gettweets?politiker="+ personID
             $.ajax({
                 method:'GET',
@@ -108,13 +117,13 @@ $(document).ready(function() {
                 svpol();
 
                 }else{
-/* ----------------------------- showing tweets ----------------------------- */
+        /* ----------------------------- showing tweets ----------------------------- */
                 $.each(allTweets, function(i,tweet){
                     if(i<5){
-
+                    console.log(tweet);
                     tweetOut += `
                     <div class='container bg-light mb-3 ' id=''>
-		            <h6 ><span class='fw-bold text-muted'>Date:</span> ${tweet.date} </h6> 
+		            <h6 ><span class='fw-bold text-muted'>Date:</span> ${tweet.created_at} </h6> 
                     <div id=''>${tweet.text}</div> 
                     <div id=''> <span class='fw-bold text-muted'>ID:</span>${tweet.id}</div>
                     </div>
