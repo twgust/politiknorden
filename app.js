@@ -66,9 +66,17 @@ const server = http.createServer((req, res) => {
   else if (reqUrl.pathname === "/api/getpoliticiandetails"){
     const urlParams = reqUrl.query;
     const polID = urlParams['politiker'];
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(politicianDetails.getPoliticianDetails(riksdagenJSON, polID)));
+    const details = politicianDetails.getPoliticianDetails(riksdagenJSON, polID);
+    if (details == null) {
+      res.statusCode = 400
+      res.setHeader('Content-Type','text/plain')
+      res.end("400 Bad Request")
+    }
+    else {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify(details));
+    }
   }
 
 
