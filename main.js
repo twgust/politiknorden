@@ -77,12 +77,13 @@ $(document).ready(function() {
                 url:url2,
                 type:'JSON'
             }).done(function (data){
-                let svepol=data.data;
+                let svepol=data;
                 svpolOut='';
                 $.each(svepol, function(i,svtweet){
                     if(i<5){
+                        i++;
                         svpolOut +=`
-                        <h6 class=' bg-light' > <span class='fs-5 fst-italic'>#svpol ${i+1}:</span> ${svtweet.text}</h6>
+                        <h6 class=' bg-light' > <span class='fs-5 fst-italic'>#svpol ${i}:</span> ${svtweet.text}</h6>
                         `
                     $('#svbox').html(svpolOut);
                     }
@@ -100,10 +101,10 @@ $(document).ready(function() {
                 url:url ,
                 type:"JSON"
             }).done(function(data){
-                let allTweets= data.data
+                let allTweets= data
                 let tweetOut = '';
                 /* --------------------------- if no tweets found --------------------------- */
-                if (allTweets== undefined){
+                if (data.meta.result_count == 0){
                     tweetOut += `
                     <div class='container bg-light '>
 		            <div class="font-monospace fs-5">¤ No tweet by "${personName}" has been found.</div> 
@@ -123,9 +124,10 @@ $(document).ready(function() {
                     console.log(tweet);
                     tweetOut += `
                     <div class='container bg-light mb-3 ' id=''>
-		            <h6 ><span class='fw-bold text-muted'>Date:</span> ${tweet.created_at} </h6> 
+		            <h6 ><span class='fw-bold text-muted'>Date:</span> ${tweet.date} </h6> 
                     <div id=''>${tweet.text}</div> 
                     <div id=''> <span class='fw-bold text-muted'>ID:</span>${tweet.id}</div>
+                    <div id=''> <span class='fw-bold text-muted'>By:</span>@${tweet.author}</div>
                     </div>
 
                     `;
