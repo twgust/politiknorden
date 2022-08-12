@@ -24,6 +24,7 @@ needle används för Twitter-modulen.
 #### 3.1 Klona repositoriet
 
 #### 3.2 Kör export BEARER_TOKEN='dinTwitterNyckel' i din bash / unix terminal (exempelvis git bash)
+## Twitter nyckel hämtas under API_KEY.txt som bifogas vid inlämning. 
 
 #### 3.3 Programmet startas genom att köra kommandot  *node app.js* i mappen där repositoriet sparats
 
