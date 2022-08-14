@@ -31,6 +31,10 @@ needle används för Twitter-modulen.
 ![Korrekt output](https://i.imgur.com/W9hQQh7.png)
 
 ### 4. Felsökning
+
 #### 4.1 "Error: Cannot find module 'needle'" - Felaktig needle installation, gå till steg 2.2.
+![Felaktig needle installation](https://i.imgur.com/2RkhrqE.png)
+
 #### 4.2 "TypeError: Cannot read properties of undefined (reading 'result_count')" - Twitter API nyckeln fungerar inte, gå till steg 3.1.
+![Fel API-Nyckel](https://i.imgur.com/mZOACvG.png)
 
