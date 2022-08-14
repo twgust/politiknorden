@@ -30,7 +30,7 @@ needle används för Twitter-modulen.
 
 ![Korrekt output](https://i.imgur.com/W9hQQh7.png)
 
-#### 3.3 Hemsidan ska nu vara nåbar på port 127.0.0.1:3000 (localhost)
+#### 3.3 Hemsidan ska nu vara nåbar på 127.0.0.1:3000 (localhost)
 
 
 
