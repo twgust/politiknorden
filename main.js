@@ -4,7 +4,7 @@ $(document).ready(function() {
     /* -------------------------------------------------------------------------- */
 	getLedamot();
     function getLedamot(){
-        let url ="http://127.0.0.1:3000/api/getpolitician"
+        let url ="/api/getpolitician"
         $.ajax({
             method:'GET',
             url:url ,
@@ -43,7 +43,7 @@ $(document).ready(function() {
     });
     /* --------------------------- Get person details --------------------------- */
     function getDetail(personID){
-        let urlD= "http://127.0.0.1:3000/api/getpoliticiandetails?politiker="+ personID
+        let urlD= "/api/getpoliticiandetails?politiker="+ personID
         $.ajax({
             method:'GET',
             url:urlD,
@@ -71,7 +71,7 @@ $(document).ready(function() {
     }
     /* ------------------------- getting data from SVPOL ------------------------ */
         function svpol (){
-            let url2= "http://127.0.0.1:3000/api/gettweets?politiker="+ '349'
+            let url2= "/api/gettweets?politiker="+ '349'
             $.ajax({
                 method:'GET',
                 url:url2,
@@ -95,7 +95,7 @@ $(document).ready(function() {
         /* -------------------------------------------------------------------------- */
         function getTweet(personID, personName) {
             
-            let url ="http://127.0.0.1:3000/api/gettweets?politiker="+ personID
+            let url ="/api/gettweets?politiker="+ personID
             $.ajax({
                 method:'GET',
                 url:url ,
